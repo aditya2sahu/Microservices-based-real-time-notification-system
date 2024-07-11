@@ -23,7 +23,7 @@ Make sure you have the following software installed:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/Microservices-based-real-time-notification-system.git
+    git clone https://github.com/aditya2sahu/Microservices-based-real-time-notification-system.git
     ```
 
 2. Navigate to the project directory:
