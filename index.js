@@ -1,6 +1,6 @@
 const express = require('express')
 const MongoClient = require('./Config/DB')
-const { rabbitMqConsumer, getUserByToken } = require('./Utils')
+const {  getUserByToken } = require('./Utils')
 require('dotenv').config()
 const routeManager = require('./Routes/RouteManager')
 const bodyParser = require('body-parser')
@@ -12,9 +12,8 @@ const { Users } = require('./Models')
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./sweggerConfig')
 
-const RABBITMQ_HOST = 'localhost';
-const RABBITMQ_PORT = 5672;
-
+const RABBITMQ_HOST = process.env.RABBITMQ_HOST;
+const RABBITMQ_PORT = process.env.RABBITMQ_PORT;
 
 const app = express();
 const httpServer = createServer(app);
@@ -63,7 +62,7 @@ io.on('connection', async (socket) => {
                             const msgContent = message.content.toString();
                             if (socket) {
                                 console.log({ msgContent }, "Notification Send")
-                                socket.emit('backend-notifications', msgContent || " No Any Notification")
+                                socket.emit('backend-notifications', msgContent)
                             }
                         } else {
                             console.log('No Any Notifications')
