@@ -60,22 +60,19 @@ module.exports = authRouter
  *      - User
  *     summary: Login and receive a JWT.
  *     description:  Login with email and password and receive a JWT.
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - email
- *               - password
- *             properties:
- *               email:
- *                 type: string
- *                 example: "example@gmail.com"
- *               password:
- *                 type: string
- *                 example: "example123"
+ *     parameters:
+ *       - in: query
+ *         name: email
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Use email to get token
+ *       - in: query
+ *         name: password
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Use password to get token
  *     responses:
  *       200:
  *         description: Users retrieved successfully

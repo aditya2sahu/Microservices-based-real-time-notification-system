@@ -1,6 +1,6 @@
 const express = require('express')
 const MongoClient = require('./Config/DB')
-const {  getUserByToken } = require('./Utils')
+const { getUserByToken } = require('./Utils')
 require('dotenv').config()
 const routeManager = require('./Routes/RouteManager')
 const bodyParser = require('body-parser')
@@ -59,11 +59,10 @@ io.on('connection', async (socket) => {
                 const consumeNotification = () => {
                     channel.consume(queue, (message) => {
                         if (message) {
+                            channel.ack(message)
                             const msgContent = message.content.toString();
-                            if (socket) {
-                                console.log({ msgContent }, "Notification Send")
-                                socket.emit('backend-notifications', msgContent)
-                            }
+                            console.log({ msgContent }, "Notification Send")
+                            socket.emit('backend-notifications', msgContent)
                         } else {
                             console.log('No Any Notifications')
                         }

@@ -102,7 +102,7 @@ To test notifications, follow these steps using Postman:
 
 2. **Configure Socket.IO in Postman:**
 
-   - Open Postman and click on ToP left `New` the select `Socket.IO`.
+   - Open Postman and click on Top left `New` then select `Socket.IO`.
    - Enter the URL of your Socket.IO server, for example, `localhost:your_port_number`.
    - Click on `Events` and add an event with the name `backend-notifications` and its description.
 
